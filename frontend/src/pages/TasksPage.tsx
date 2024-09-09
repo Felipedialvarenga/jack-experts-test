@@ -85,7 +85,6 @@ export default function TasksPage() {
     }
     //Variável para checagem da exibição do modal (no caso do modal ser create não há tarefa selecionada pois ela estará sendo criada)
     const showModal = modalType && selectedTask || modalType == 'create';
-
     return(
         <>
         <div className="mt-10 w-full flex flex-col items-center">
@@ -113,6 +112,7 @@ export default function TasksPage() {
                     </button>
                 </div>
                 <div className="bg-zinc-700/30 rounded-md flex flex-col py-5 divide-y-2 divide-emerald-700 mt-4">
+                    {!filteredTasks.length && <p className="text-center text-zinc-400">Sem Tarefas</p>}              
                     {filteredTasks.map((task: iTask) => <Task taskData={task} key={task.id} selectTask={selectTask} selectModalType={selectModalType} />)}
                 </div>
             </div>          
